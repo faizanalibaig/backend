@@ -6,6 +6,10 @@ app.get('/hello', (req, res)=>{
     res.send('Hello World')
 })
 
+app.get('/', (req, res)=>{
+    res.send('Home')
+})
+
 app.listen(process.env.port, ()=>{
    console.log(`${process.env.port}`)
 })
