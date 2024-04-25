@@ -9,7 +9,6 @@ app.get('/hello', (req, res)=>{
 app.get('/', (req, res)=>{
     res.send('Home')
 })
-
 app.listen(process.env.port, ()=>{
    console.log(`${process.env.port}`)
 })
