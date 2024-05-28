@@ -16,11 +16,11 @@ app.post('/api', (req, res) => {
     }
 });
 
-app.post('/api/hello', (req, res) => {
+app.post('/api/hello',async (req, res) => {
     try {
         const { title, description } = req.body;
         connectmongo()
-        const test=Test.create({
+        const test=await Test.create({
             title,
             description,
         })
