@@ -1,5 +1,7 @@
 require('dotenv').config();
 const express = require('express');
+const connectmongo=require('./libs/mongo')
+const Test= require('./models/testmodel')
 const app = express();
 
 app.use(express.json());
@@ -17,10 +19,15 @@ app.post('/api', (req, res) => {
 app.post('/api/hello', (req, res) => {
     try {
         const { title, description } = req.body;
+        connectmongo()
+        const test=Test.create({
+            title,
+            description,
+        })
 
-        res.status(201).json({ message: "working" });
+       return res.status(201).json({ message: "working" });
     } catch (error) {
-        res.status(500).json({ message: "failed", error: error.message });
+        return res.status(500).json({ message: "failed", error: error.message });
     }
 });
 
